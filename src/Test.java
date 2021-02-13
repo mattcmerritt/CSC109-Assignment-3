@@ -7,5 +7,7 @@ public class Test {
 		Snack water = new Snack("Water", 1.0);
 		Snack mountainDew = new Snack("Mountain Dew", 0.50);
 		Snack gatorade = new Snack("Gatorade", 3.0);
+		
+		VendingMachine machine = new VendingMachine(2, 3, new Snack[] {chips, doritos, oreos, water, mountainDew, gatorade});
 	}
 }

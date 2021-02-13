@@ -6,6 +6,7 @@ public class VendingMachine {
 	private Snack[][] snackList;
 	private Snack selectedSnack;
 	private double moneyInside;
+	private final Snack NO_SNACK = new Snack("nothing", 0);
 	
 	public VendingMachine(int snacksPerRow, int rows, Snack[] inputSnacks) {
 		this.snacksPerRow = snacksPerRow;
@@ -96,5 +97,28 @@ public class VendingMachine {
 		}
 		
 		System.out.println("Your change is $" + (moneyInside - selectedSnack.getPrice()) + " (" + dollarsChange + " dollar(s) and " + quartersChange + " quarter(s)).");
+	}
+	
+	public void promptConfirmPurchase() {
+		System.out.println("You have chosen to buy " + selectedSnack.getName() + " for $" + selectedSnack.getPrice() + ".");
+		System.out.println("Are you sure you want to buy that? (yes/no)");
+	}
+	
+	public void confirmPurchase(String answer) {
+		if(answer.equals("yes") && moneyInside >= selectedSnack.getPrice()) {
+			giveChange();
+		}
+		else {
+			if(!(answer.equals("no") || answer.equals("yes"))) {
+				System.out.println("That input was invalid.");
+			}
+			else if(moneyInside < selectedSnack.getPrice()) {
+				System.out.println("You didn't put in enough money to buy the snack.");
+			}
+			System.out.println("Here is your money back.");
+			selectedSnack = NO_SNACK;
+			giveChange();
+		}
+		System.out.println("Please take your change.");
 	}
 }

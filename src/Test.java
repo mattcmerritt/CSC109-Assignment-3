@@ -16,6 +16,7 @@ public class Test {
 		System.out.println("Please enter the amount of dollars you would like to insert.");
 		machine.insertMoney(scan.nextInt());
 		scan.nextLine();
-		machine.giveChange();
+		machine.promptConfirmPurchase();
+		machine.confirmPurchase(scan.nextLine());
 	}
 }

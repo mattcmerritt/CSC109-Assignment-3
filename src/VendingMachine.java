@@ -4,6 +4,7 @@ public class VendingMachine {
 	private int snacksPerRow;
 	private int rows;
 	private Snack[][] snackList;
+	private Snack selectedSnack;
 	
 	public VendingMachine(int snacksPerRow, int rows, Snack[] inputSnacks) {
 		this.snacksPerRow = snacksPerRow;
@@ -28,11 +29,11 @@ public class VendingMachine {
 		System.out.println(this);
 		
 		System.out.println("To order an item, input the slot for that item.");
-		System.out.println("For example, put in A1 to order " + snackList[0][0].getName());
+		System.out.println("For example, put in \"A1\" to order " + snackList[0][0].getName());
 	}
 	
 	// returns the contents of the vending machine in the format
-	// "slot: name - $price
+	// "slot: name - $price"
 	public String toString() {
 		String output = "";
 		for (int row = 0; row < snackList.length; row++) {
@@ -46,4 +47,20 @@ public class VendingMachine {
 		return output;
 	}
 	
+	// method takes the slot input from the user and stores the corresponding Snack in the machine
+	// slot will be the value of scan.nextLine()
+	public void pickSnack(String slot) {
+		// translates the slot to an array index
+		int row = slot.charAt(0) - 'A';
+		int col = slot.charAt(1) - '1';
+		// check to see if slot was valid
+		try {
+			selectedSnack = snackList[row][col];
+			System.out.println("You chose the " + selectedSnack.getName() + " for $" + selectedSnack.getPrice() + ".");
+		}
+		catch(ArrayIndexOutOfBoundsException e) {
+			System.out.println("That slot is invalid, please try running the program again and choosing a correct slot.");
+			System.exit(0);
+		}
+	}
 }

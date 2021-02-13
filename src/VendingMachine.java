@@ -70,4 +70,31 @@ public class VendingMachine {
 		moneyInside = dollars;
 		System.out.println("You have inserted " + dollars + " dollars.");
 	}
+	
+	// giving change in dollars and quarters back to the user
+	public void giveChange() {
+		double change = moneyInside - selectedSnack.getPrice();
+
+		int dollarsChange = 0;
+		int quartersChange = 0;
+		
+		// giving back any extra whole dollars
+		while (change >= 1) {
+			dollarsChange += 1;
+			change -= 1;
+		}
+		
+		// giving back any extra quarters
+		while (change >= 0.25) {
+			quartersChange += 1;
+			change -= 0.25;
+		}
+		
+		// checking for decimal precision issues
+		if (Math.abs(change - 0.25) > 0.001) {
+			quartersChange += 0.25;
+		}
+		
+		System.out.println("Your change is $" + (moneyInside - selectedSnack.getPrice()) + " (" + dollarsChange + " dollar(s) and " + quartersChange + " quarter(s)).");
+	}
 }

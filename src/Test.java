@@ -13,5 +13,8 @@ public class Test {
 		
 		VendingMachine machine = new VendingMachine(2, 3, new Snack[] {chips, doritos, oreos, water, mountainDew, gatorade});
 		machine.pickSnack(scan.nextLine());
+		System.out.println("Please enter the amount of dollars you would like to insert.");
+		machine.insertMoney(scan.nextInt());
+		scan.nextLine();
 	}
 }

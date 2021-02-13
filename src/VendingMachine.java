@@ -5,6 +5,7 @@ public class VendingMachine {
 	private int rows;
 	private Snack[][] snackList;
 	private Snack selectedSnack;
+	private double moneyInside;
 	
 	public VendingMachine(int snacksPerRow, int rows, Snack[] inputSnacks) {
 		this.snacksPerRow = snacksPerRow;
@@ -62,5 +63,11 @@ public class VendingMachine {
 			System.out.println("That slot is invalid, please try running the program again and choosing a correct slot.");
 			System.exit(0);
 		}
+	}
+	
+	public void insertMoney(int dollars)
+	{
+		moneyInside = dollars;
+		System.out.println("You have inserted " + dollars + " dollars.");
 	}
 }

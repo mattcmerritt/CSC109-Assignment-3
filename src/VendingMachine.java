@@ -121,4 +121,16 @@ public class VendingMachine {
 		}
 		System.out.println("Please take your change.");
 	}
+	
+	public void departure()
+	{
+		if (selectedSnack.equals(NO_SNACK))
+		{
+			System.out.println("If you're not ordering get moving, we got customers.");
+		}
+		else
+		{
+			System.out.println("Enjoy your " + selectedSnack.getName() + "!");
+		}
+	}
 }

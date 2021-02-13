@@ -18,5 +18,6 @@ public class Test {
 		scan.nextLine();
 		machine.promptConfirmPurchase();
 		machine.confirmPurchase(scan.nextLine());
+		machine.departure();
 	}
 }
